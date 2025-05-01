@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">  
+    <title>calendar</title>
+    <link rel="stylesheet" href="ISTFINAL.css">
+</head>
+<body id="contact">
+  <nav class="navbar">
+        <div class="logo">
+            <img src="nav_icon_slc.jpg" alt="Logo" width="50px" height="50px">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index2.html">About</a></li>
+            <li><a href="index3.html">Merch</a></li>
+            <li><a href="index5.html">Calendar</a></li>
+            <li><a href="index4.html">Contact</a></li>
+        </ul>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+        </div>
+
+        
+    </nav>
+
+    <div class="container7">
+        <h1>Calendar</h1>
+        <table class="calendar-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody id="event-list">
+                <tr>
+                    <td>2025-05-03</td>
+                    <td>GTFO Fest</td>
+                    <td>Music festival for joey's last show</td>
+                </tr>
+                <tr>
+                    <td>2025-06-20</td>
+                    <td>Reading, PA takeover</td>
+                    <td>show at cloud 10 in Reading, PA</td>
+                </tr>
+                <tr>
+                    <td>2025-06-27</td>
+                    <td>Cleaveland</td>
+                    <td>Show at Mark's Bowling Alley in Cleveland, Ohio</td>
+                </tr>
+           
+            </tbody>
+          
+        </table>
+
+        <div class="add-event">
+            <h2>Add Event</h2>
+           
+<form id="event-form">
+    <input type="text" id="event-name" placeholder="Event Name" required>
+    <input type="date" id="event-date" required>
+    <textarea id="event-description" placeholder="Event Description"></textarea>
+    <button type="submit">Add Event</button>
+</form>
+
+<p id="form-status" style="color: green; display: none;">Form has been submitted</p>
+
+<table>
+    <tbody id="event-list">
+        
+    </tbody>
+</table>
+        </div>
+    </div>
+    <footer id="footer">
+        <p>&copy; 2025 SLC. All rights reserved.</p>
+        <p>Contact: Officialbigstripes@gmail.com
+        </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("DOM fully loaded");
+
+            const eventForm = document.getElementById("event-form");
+            if (!eventForm) {
+                console.error("Event form not found");
+                return;
+            }
+
+            const eventList = document.getElementById("event-list");
+            if (!eventList) {
+                console.error("Event list not found");
+                return;
+            }
+
+            eventForm.addEventListener("submit", function (event) {
+                event.preventDefault();
+                console.log("Form submitted");
+
+                const eventName = document.getElementById("event-name").value;
+                const eventDate = document.getElementById("event-date").value;
+                const eventDescription = document.getElementById("event-description").value;
+
+                console.log("Event Name:", eventName);
+                console.log("Event Date:", eventDate);
+                console.log("Event Description:", eventDescription);
+
+                const newRow = document.createElement("tr");
+
+                const dateCell = document.createElement("td");
+                dateCell.textContent = eventDate;
+                newRow.appendChild(dateCell);
+
+                const nameCell = document.createElement("td");
+                nameCell.textContent = eventName;
+                newRow.appendChild(nameCell);
+
+                const descriptionCell = document.createElement("td");
+                descriptionCell.textContent = eventDescription;
+                newRow.appendChild(descriptionCell);
+
+                eventList.appendChild(newRow);
+
+                const statusMessage = document.getElementById("form-status");
+                statusMessage.style.display = "block";
+                statusMessage.textContent = "Form has been submitted";
+
+                eventForm.reset();
+            });
+        });
+    </script>
+</body>
+</html>
